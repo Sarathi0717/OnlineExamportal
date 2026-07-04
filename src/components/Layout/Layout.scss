@@ -1,0 +1,29 @@
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f4f6f9;
+}
+
+/* Navbar stays fixed style (optional enhancement) */
+.app-layout nav {
+  background: #ffffff;
+  padding: 15px 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Main page content */
+.main-content {
+  flex: 1;
+  padding: 30px;
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+}
+
+/* Optional responsive fix */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 15px;
+  }
+}
