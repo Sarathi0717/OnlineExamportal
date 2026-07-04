@@ -1,6 +1,6 @@
 .login-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  background: linear-gradient(135deg, #6a11cb, #060d19);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,7 +33,7 @@
       transition: all 0.3s ease;
 
       &:focus {
-        border-color: #2575fc;
+        border-color: #11161e;
         box-shadow: 0 0 8px rgba(37, 117, 252, 0.3);
       }
     }
@@ -41,7 +41,7 @@
     button {
       width: 100%;
       padding: 14px;
-      background: #2575fc;
+      background: #1c52ae;
       color: #ffffff;
       border: none;
       border-radius: 8px;
@@ -51,7 +51,7 @@
       transition: 0.3s;
 
       &:hover {
-        background: #1c60d8;
+        background: #090d14;
       }
 
       &:active {
@@ -67,7 +67,7 @@
 
       a {
         margin-left: 5px;
-        color: #2575fc;
+        color: #121821;
         font-weight: 600;
         text-decoration: none;
 

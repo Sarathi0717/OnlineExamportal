@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import questions from "../../data/questions";
+import Sidebar from "../../components/Sidebar/Sidebar";
 import QuestionCard from "../../components/QuestionCard";
 import Timer from "../../components/Timer";
-import Navbar from "../../components/Navbar";
-
+import questions from "../../data/questions";
 import { getUser, saveUser } from "../../utils/localStorage";
-
+import Navbar from "../../components/Navbar";
 import "./Exam.scss";
 
 function Exam() {
@@ -102,8 +100,8 @@ function Exam() {
 
   return (
     <>
-      <Navbar />
-
+      
+<Navbar />
       <div className="exam-container">
         <h1 className="exam-title">Online Examination</h1>
 

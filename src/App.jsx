@@ -8,74 +8,45 @@ import Layout from "./components/Layout/Layout";
 import Dashboard from "./pages/Dashboard";
 import Exam from "./pages/Exam/Exam";
 import Result from "./pages/Result";
-import Leaderboard from "./pages/Leaderboard";
+import Leaderboard from "./pages/Leaderboard/Leaderboard";
 import Profile from "./pages/Profile/profile";
+import About from "./pages/About/About"
 
 function App() {
   return (
-    <Routes>
-      {/* Public Routes */}
-      <Route path="/" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
+   <Routes>
+  {/* Public */}
+  <Route path="/" element={<Login />} />
+  <Route path="/signup" element={<Signup />} />
 
-      {/* Routes with Layout */}
-      <Route element={<Layout />}>
-      
-        <Route
-          path="/home"
-          element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          }
-        />
+  {/* Pages with Layout */}
+  <Route element={<Layout />}>
+    <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+    <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+    <Route path="/leaderboard" element={<ProtectedRoute><Leaderboard /></ProtectedRoute>} />
+    <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+    <Route path="/result" element={<ProtectedRoute><Result /></ProtectedRoute>} />
+  </Route>
 
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
+  {/* Separate pages */}
+  <Route
+    path="/exam"
+    element={
+      <ProtectedRoute>
+        <Exam />
+      </ProtectedRoute>
+    }
+  />
 
-        <Route
-          path="/exam"
-          element={
-            <ProtectedRoute>
-              <Exam />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/result"
-          element={
-            <ProtectedRoute>
-              <Result />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/leaderboard"
-          element={
-            <ProtectedRoute>
-              <Leaderboard />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/profile"
-          element={
-            <ProtectedRoute>
-              <Profile />
-            </ProtectedRoute>
-          }
-        />
-      </Route>
-    </Routes>
+  <Route
+    path="/about"
+    element={
+      <ProtectedRoute>
+        <About />
+      </ProtectedRoute>
+    }
+  />
+</Routes>
   );
 }
 

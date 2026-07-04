@@ -1,7 +1,7 @@
 .sidebar {
   width: 270px;
   min-height: 100vh;
-  background: linear-gradient(180deg, #1e3a8a, #2563eb);
+  background: linear-gradient(180deg, #1c212f, #28172e);
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@
     width: 90px;
     height: 90px;
     background: #ffffff;
-    color: #2563eb;
+    color: #3d6cd1;
     border-radius: 50%;
     margin: 0 auto 15px;
     display: flex;
@@ -73,7 +73,7 @@
 
   &.active {
     background: #ffffff;
-    color: #2563eb;
+    color: #161b27;
     font-weight: 600;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   }
@@ -102,7 +102,7 @@
   transition: 0.3s ease;
 
   &:hover {
-    background: #dc2626;
+    background: #693737;
     transform: translateY(-2px);
   }
 

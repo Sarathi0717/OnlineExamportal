@@ -24,7 +24,7 @@ function Home() {
           <h1>Welcome to LEGEND'S Online Exam portal</h1>
 
           <p>
-           IF YOU CAN DREAM IT YOU CAN DO IT.*
+           # IF YOU CAN DREAM IT YOU CAN DO IT.*!
           </p>
 
           <div className="buttons">

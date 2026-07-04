@@ -1,39 +1,27 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../../components/Navbar";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { getUser } from "../../utils/localStorage";
+import "./Profile.scss";
 
 function Profile() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    setUser(getUser());
+    const currentUser = getUser();
+    setUser(currentUser);
   }, []);
 
-  if (!user) {
-    return (
-      <>
-        <Navbar />
-
-        <div className="profile-page">
-          <Sidebar />
-
-          <div className="profile-content">
-            <h2>User Not Found</h2>
-          </div>
-        </div>
-      </>
-    );
-  }
-
   return (
-    <>
-      <Navbar />
+    <div className="profile-page">
+      <Sidebar />
 
-      <div className="profile-page">
-        <Sidebar />
-
-        <div className="profile-content">
+      <div className="profile-content">
+        {!user ? (
+          <div className="profile-card">
+            <h2>User Not Found</h2>
+            <p>Please login to view your profile.</p>
+          </div>
+        ) : (
           <div className="profile-card">
             <div className="profile-image">
               <img
@@ -73,9 +61,9 @@ function Profile() {
               </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
-    </>
+    </div>
   );
 }
 

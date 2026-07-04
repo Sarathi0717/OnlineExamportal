@@ -5,10 +5,9 @@ import Navbar from "../Navbar";
 function Layout() {
   return (
     <div className="app-layout">
-      {/* Top Navbar */}
+      {/* Navbar displayed only once */}
       <Navbar />
 
-      {/* Page Content (IMPORTANT) */}
       <main className="main-content">
         <Outlet />
       </main>

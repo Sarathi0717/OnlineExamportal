@@ -1,6 +1,6 @@
 .signup {
   min-height: 100vh;
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  background: linear-gradient(135deg, #6a11cb, #0c121c);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,7 +32,7 @@
       transition: 0.3s ease;
 
       &:focus {
-        border-color: #2575fc;
+        border-color: #141b28;
         box-shadow: 0 0 8px rgba(37, 117, 252, 0.3);
       }
     }
@@ -50,7 +50,7 @@
       transition: 0.3s ease;
 
       &:hover {
-        background: #1b5fd6;
+        background: #0e121a;
       }
     }
 
@@ -61,7 +61,7 @@
 
       a {
         margin-left: 5px;
-        color: #2575fc;
+        color: #121924;
         text-decoration: none;
         font-weight: 600;
 

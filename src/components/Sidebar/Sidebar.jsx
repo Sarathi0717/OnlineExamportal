@@ -13,7 +13,9 @@ import {
   getUser,
   logoutUser,
 } from "../../utils/localStorage";
-import './Sidebar.scss';
+import { FaInfoCircle } from "react-icons/fa";
+import "./Sidebar.scss";
+
 function Sidebar() {
   const navigate = useNavigate();
 
@@ -21,14 +23,13 @@ function Sidebar() {
 
   const handleLogout = () => {
     logoutUser();
-    navigate("/login");
+    navigate("/");
   };
 
   return (
     <aside className="sidebar">
 
       <div className="sidebar-header">
-
         <div className="profile-image">
           <FaUser size={50} />
         </div>
@@ -36,32 +37,65 @@ function Sidebar() {
         <h3>{user ? user.name : "Student"}</h3>
 
         <p>{user ? user.email : "student@gmail.com"}</p>
-
       </div>
 
       <nav className="sidebar-menu">
 
-        <NavLink to="/" className="menu-item">
+        <NavLink
+          to="/home"
+          className={({ isActive }) =>
+            isActive ? "menu-item active" : "menu-item"
+          }
+        >
           <FaHome />
           <span>Home</span>
         </NavLink>
 
-        <NavLink to="/dashboard" className="menu-item">
+        <NavLink
+          to="/dashboard"
+          className={({ isActive }) =>
+            isActive ? "menu-item active" : "menu-item"
+          }
+        >
           <FaClipboardList />
           <span>Dashboard</span>
         </NavLink>
 
-        <NavLink to="/exam" className="menu-item">
+        <NavLink
+          to="/exam"
+          className={({ isActive }) =>
+            isActive ? "menu-item active" : "menu-item"
+          }
+        >
           <FaBookOpen />
           <span>Exam</span>
         </NavLink>
+        <NavLink
+  to="/about"
+  className={({ isActive }) =>
+    isActive ? "menu-item active" : "menu-item"
+  }
+>
+  <FaInfoCircle />
+  <span>About</span>
+</NavLink>
 
-        <NavLink to="/leaderboard" className="menu-item">
+        <NavLink
+          to="/leaderboard"
+          className={({ isActive }) =>
+            isActive ? "menu-item active" : "menu-item"
+          }
+        >
           <FaTrophy />
           <span>Leaderboard</span>
         </NavLink>
 
-        <NavLink to="/profile" className="menu-item">
+        <NavLink
+          to="/profile"
+          className={({ isActive }) =>
+            isActive ? "menu-item active" : "menu-item"
+          }
+        >
           <FaUser />
           <span>Profile</span>
         </NavLink>
@@ -69,15 +103,13 @@ function Sidebar() {
       </nav>
 
       <div className="sidebar-footer">
-
         <button
           className="logout-button"
           onClick={handleLogout}
         >
           <FaSignOutAlt />
-          Logout
+          <span>Logout</span>
         </button>
-
       </div>
 
     </aside>
