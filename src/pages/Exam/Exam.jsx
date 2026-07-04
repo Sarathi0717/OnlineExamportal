@@ -106,7 +106,7 @@ function Exam() {
         <h1 className="exam-title">Online Examination</h1>
 
         <Timer
-          duration={600}
+          duration={300}
           onTimeUp={handleSubmit}
         />
 
