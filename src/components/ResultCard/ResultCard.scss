@@ -1,0 +1,198 @@
+.result-card {
+  width: 95%;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 40px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+  text-align: center;
+  animation: fadeIn 0.7s ease;
+
+  h1 {
+    font-size: 40px;
+    color: #2f2f2f;
+    margin-bottom: 35px;
+    font-weight: 700;
+  }
+}
+
+.student-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 40px;
+
+  .icon {
+    font-size: 60px;
+    color: #555;
+  }
+
+  h2 {
+    font-size: 30px;
+    color: #333;
+    font-weight: 700;
+  }
+}
+
+.result-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.info-box {
+  background: #fff;
+  border-radius: 18px;
+  padding: 28px 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.08);
+  transition: .35s;
+  border-top: 5px solid #d6d6d6;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 35px rgba(0,0,0,.15);
+  }
+
+  h3 {
+    margin: 18px 0 12px;
+    color: #444;
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 34px;
+    font-weight: bold;
+    color: #222;
+  }
+}
+
+.icon {
+  font-size: 48px;
+}
+
+.success {
+  color: #16a34a;
+}
+
+.danger {
+  color: #dc2626;
+}
+
+.percent {
+  color: #f59e0b;
+}
+
+.trophy {
+  color: #8b5e3c;
+}
+
+.status {
+  margin: 45px 0 30px;
+
+  h2 {
+    padding: 18px;
+    border-radius: 12px;
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  .pass {
+    background: #dcfce7;
+    color: #15803d;
+    border: 2px solid #86efac;
+  }
+
+  .fail {
+    background: #fee2e2;
+    color: #b91c1c;
+    border: 2px solid #fca5a5;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 220px;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .35s;
+  }
+}
+
+.retry-btn {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(217,119,6,.35);
+  }
+}
+
+.home-btn {
+  background: linear-gradient(135deg, #4b5563, #1f2937);
+  color: white;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(31,41,55,.35);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+
+  .result-card {
+    padding: 25px;
+
+    h1 {
+      font-size: 30px;
+    }
+  }
+
+  .student-details {
+    flex-direction: column;
+
+    .icon {
+      font-size: 55px;
+    }
+
+    h2 {
+      font-size: 25px;
+    }
+  }
+
+  .buttons {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+    }
+  }
+
+}

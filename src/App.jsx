@@ -5,15 +5,18 @@ import Login from './Pages/Login/Login';
 import Home from './Pages/Home/Home';
 import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout/Layout";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard/Dashboard";
 import Exam from "./pages/Exam/Exam";
 import Result from "./pages/Result";
 import Leaderboard from "./pages/Leaderboard/Leaderboard";
 import Profile from "./pages/Profile/profile";
 import About from "./pages/About/About"
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
+    <>
+    
    <Routes>
   {/* Public */}
   <Route path="/" element={<Login />} />
@@ -26,17 +29,17 @@ function App() {
     <Route path="/leaderboard" element={<ProtectedRoute><Leaderboard /></ProtectedRoute>} />
     <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
     <Route path="/result" element={<ProtectedRoute><Result /></ProtectedRoute>} />
-  </Route>
-
   {/* Separate pages */}
+  <Route  path="/exam" element= {<ProtectedRoute><Exam/></ProtectedRoute>} />
   <Route
-    path="/exam"
-    element={
-      <ProtectedRoute>
-        <Exam />
-      </ProtectedRoute>
-    }
-  />
+    path="/exam/1"
+    element={<Exam />} />
+    <Route
+    path="/exam/2"
+    element={<Exam />} />
+    <Route
+    path="/exam/3"
+    element={<Exam />} />
 
   <Route
     path="/about"
@@ -46,7 +49,9 @@ function App() {
       </ProtectedRoute>
     }
   />
+  </Route>
 </Routes>
+</>
   );
 }
 

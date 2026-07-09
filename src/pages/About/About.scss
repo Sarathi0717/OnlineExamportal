@@ -29,14 +29,14 @@ body {
 
 .about-card h1 {
   text-align: center;
-  color: #1e3a8a;
+  color: #ff010a;
   font-size: 38px;
   margin-bottom: 25px;
 }
 
 .intro {
   text-align: center;
-  color: #555;
+  color: #2c2323;
   font-size: 18px;
   line-height: 1.8;
   margin-bottom: 40px;
@@ -47,10 +47,10 @@ body {
 }
 
 .about-card section h2 {
-  color: #2563eb;
+  color: #fd1d1d;
   font-size: 28px;
   margin-bottom: 20px;
-  border-left: 6px solid #2563eb;
+  border-left: 6px solid #1a1c21;
   padding-left: 15px;
 }
 
@@ -73,7 +73,7 @@ body {
 }
 
 .tech-card {
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  background: linear-gradient(135deg, #02000d, #b62626);
   color: white;
   padding: 25px;
   border-radius: 15px;
@@ -82,7 +82,8 @@ body {
 }
 
 .tech-card:hover {
-  transform: translateY(-8px);
+  background-color: linear-gradient(125deg, #b62626, #02000d);
+  transform: translateY(-10px);
 }
 
 .tech-card h3 {

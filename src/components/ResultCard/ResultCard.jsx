@@ -9,6 +9,7 @@ import {
   FaHome,
   FaUserGraduate,
 } from "react-icons/fa";
+import './ResultCard.scss';
 
 function ResultCard({
   studentName,

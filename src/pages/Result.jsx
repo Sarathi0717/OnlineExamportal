@@ -1,7 +1,7 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar/Sidebar";
-import ResultCard from "../components/ResultCard";
+import ResultCard from "../components/ResultCard/ResultCard";
 import { getUser } from "../utils/localStorage";
 import Navbar from "../components/Navbar";
 function Result() {
@@ -14,8 +14,9 @@ function Result() {
   }
 
   return (
+   
     <div className="result-page">
-     <Navbar />
+   
 
       <div className="result-content">
         <ResultCard
@@ -27,6 +28,7 @@ function Result() {
         />
       </div>
     </div>
+   
   );
 }
 
