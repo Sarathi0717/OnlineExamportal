@@ -7,41 +7,47 @@ import {
   FaSignOutAlt,
 } from "react-icons/fa";
 
+import exams from "../../data/exams";
 import { getUser, logoutUser } from "../../utils/localStorage";
 import "./Dashboard.scss";
 
 function Dashboard() {
   const navigate = useNavigate();
-
   const user = getUser();
 
   const exams = [
-    {
-      id: 1,
-      title: "Java Quiz",
-      questions: 10,
-      duration: "5 Minutes",
-      marks: 20,
-    },
-    {
-      id: 2,
-      title: "React Quiz",
-      questions: 10,
-      duration: "5 Minutes",
-      marks: 20,
-    },
-    {
-      id: 3,
-      title: "JavaScript Quiz",
-      questions: 10,
-      duration: "5 Minutes",
-      marks: 20,
-    },
-  ];
-
+  {
+    id: 1,
+    title: "Java Quiz",
+    duration: 300,
+    marks: 20,
+    questions: [
+      // 10 Java questions
+    ],
+  },
+  {
+    id: 2,
+    title: "React Quiz",
+    duration: 300,
+    marks: 20,
+    questions: [
+      // 10 React questions
+    ],
+  },
+  {
+    id: 3,
+    title: "JavaScript Quiz",
+    duration: 300,
+    marks: 20,
+    questions: [
+      // 10 JavaScript questions
+    ],
+  },
+];
+// export default exams;
   const handleLogout = () => {
     logoutUser();
-    navigate("/login");
+    navigate("/");
   };
 
   return (
@@ -107,46 +113,34 @@ function Dashboard() {
           Available Exams
         </h2>
 
-        <div className="exam-grid">
+  <div className="exam-grid">
+  {exams.map((exam) => (
+    <div
+      key={exam.id}
+      className="exam-card"
+    >
+      <h2>{exam.title}</h2>
 
-          {exams.map((exam) => (
+      <p>
+        <strong>Questions :</strong> {exam.questions.length}
+      </p>
 
-            <div
-              className="exam-card"
-              key={exam.id}
-            >
+      <p>
+        <strong>Duration :</strong> {exam.duration / 60} Minutes
+      </p>
 
-              <h2>{exam.title}</h2>
+      <p>
+        <strong>Total Marks :</strong> {exam.marks}
+      </p>
 
-              <p>
-                <strong>Questions :</strong>{" "}
-                {exam.questions}
-              </p>
-
-              <p>
-                <strong>Duration :</strong>{" "}
-                {exam.duration}
-              </p>
-
-              <p>
-                <strong>Total Marks :</strong>{" "}
-                {exam.marks}
-              </p>
-
-              <button
-                className="start-btn"
-                onClick={() =>
-                  navigate(`/exam/${exam.id}`)
-                }
-              >
-                Start Exam
-              </button>
-
-            </div>
-
-          ))}
-
-        </div>
+    <button
+  className="start-btn"
+  onClick={() => navigate(`/exam/${exam.id}`)}>
+  Start Exam
+</button>
+    </div>
+  ))}
+</div>
 
         <div className="bottom-buttons">
 

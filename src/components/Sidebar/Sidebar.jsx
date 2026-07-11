@@ -60,16 +60,15 @@ function Sidebar() {
           <FaClipboardList />
           <span>Dashboard</span>
         </NavLink>
-
-        <NavLink
-          to="/exam"
-          className={({ isActive }) =>
-            isActive ? "menu-item active" : "menu-item"
-          }
-        >
-          <FaBookOpen />
-          <span>Exam</span>
-        </NavLink>
+<NavLink
+  to="/exam/1"
+  className={({ isActive }) =>
+    isActive ? "menu-item active" : "menu-item"
+  }
+>
+  <FaBookOpen />
+  <span>Exam</span>
+</NavLink>
         <NavLink
   to="/about"
   className={({ isActive }) =>

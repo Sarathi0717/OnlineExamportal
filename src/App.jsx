@@ -29,9 +29,18 @@ function App() {
     <Route path="/leaderboard" element={<ProtectedRoute><Leaderboard /></ProtectedRoute>} />
     <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
     <Route path="/result" element={<ProtectedRoute><Result /></ProtectedRoute>} />
+     {/* <Route path="/exam" element={<ProtectedRoute><Exam/></ProtectedRoute>}/> */}
   {/* Separate pages */}
-  <Route  path="/exam" element= {<ProtectedRoute><Exam/></ProtectedRoute>} />
-  <Route
+   <Route
+  path="/exam/:id"
+  element={
+    <ProtectedRoute>
+      <Exam />
+    </ProtectedRoute>
+  }
+/>
+{/*  
+   <Route
     path="/exam/1"
     element={<Exam />} />
     <Route
@@ -39,8 +48,8 @@ function App() {
     element={<Exam />} />
     <Route
     path="/exam/3"
-    element={<Exam />} />
-
+    element={<Exam />} />   */}
+   
   <Route
     path="/about"
     element={

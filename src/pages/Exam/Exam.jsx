@@ -1,15 +1,35 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Sidebar from "../../components/Sidebar/Sidebar";
+import { useNavigate, useParams } from "react-router-dom";
 import QuestionCard from "../../components/QuestionCard";
 import Timer from "../../components/Timer";
-import questions from "../../data/questions";
-import { getUser, saveUser } from "../../utils/localStorage";
 import Navbar from "../../components/Navbar";
+import exams from "../../data/exams";
+import { getUser, saveUser } from "../../utils/localStorage";
 import "./Exam.scss";
 
 function Exam() {
   const navigate = useNavigate();
+  const { id } = useParams();
+
+  console.log("Route id:", id);
+  console.log("Exams:", exams);
+
+  const selectedExam = exams.find(
+    (item) => item.id === Number(id)
+  );
+
+  console.log("Selected Exam:", selectedExam);
+
+  if (!selectedExam) {
+    return (
+      <div className="exam-container">
+        <h1>Exam Not Found</h1>
+      </div>
+    );
+  }
+
+  // Correct
+  const questions = selectedExam.questions;
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
@@ -36,77 +56,70 @@ function Exam() {
   };
 
   const handleSubmit = () => {
-    try {
-      console.log("Submit button clicked");
+    let score = 0;
 
-      let score = 0;
+    questions.forEach((question, index) => {
+      if (answers[index] === question.answer) {
+        score++;
+      }
+    });
 
-      questions.forEach((question, index) => {
-        if (answers[index] === question.answer) {
-          score++;
+    localStorage.setItem(
+      "examResult",
+      JSON.stringify({
+        examTitle: selectedExam.title,
+        totalQuestions: questions.length,
+        correctAnswers: score,
+        wrongAnswers: questions.length - score,
+        score,
+        answers,
+      })
+    );
+
+    const user = getUser();
+
+    if (user) {
+      const users =
+        JSON.parse(localStorage.getItem("users")) || [];
+
+      const updatedUsers = users.map((u) => {
+        if (u.email === user.email) {
+          return {
+            ...u,
+            score: (u.score || 0) + score,
+            examsTaken: (u.examsTaken || 0) + 1,
+          };
         }
+        return u;
       });
 
-      console.log("Score:", score);
-
       localStorage.setItem(
-        "examResult",
-        JSON.stringify({
-          totalQuestions: questions.length,
-          correctAnswers: score,
-          wrongAnswers: questions.length - score,
-          score,
-          answers,
-        })
+        "users",
+        JSON.stringify(updatedUsers)
       );
 
-      console.log("Exam result saved");
-
-      const user = getUser();
-
-      if (user) {
-        const users = JSON.parse(localStorage.getItem("users")) || [];
-
-        const updatedUsers = users.map((u) => {
-          if (u.email === user.email) {
-            return {
-              ...u,
-              score: (u.score || 0) + score,
-              examsTaken: (u.examsTaken || 0) + 1,
-            };
-          }
-          return u;
-        });
-
-        localStorage.setItem("users", JSON.stringify(updatedUsers));
-
-        const updatedUser = {
-          ...user,
-          score: (user.score || 0) + score,
-          examsTaken: (user.examsTaken || 0) + 1,
-        };
-
-        saveUser(updatedUser);
-      }
-
-      console.log("Navigating to Result Page...");
-
-      navigate("/result");
-    } catch (error) {
-      console.error("Error in handleSubmit:", error);
-      alert(error.message);
+      saveUser({
+        ...user,
+        score: (user.score || 0) + score,
+        examsTaken: (user.examsTaken || 0) + 1,
+      });
     }
+
+    navigate("/result");
   };
 
   return (
     <>
-      
-<Navbar />
+      <Navbar />
+
       <div className="exam-container">
-        <h1 className="exam-title">Online Examination</h1>
+
+        <h1 className="exam-title">
+          {selectedExam.title}
+        </h1>
 
         <Timer
-          duration={300}
+          duration={selectedExam.duration}
           onTimeUp={handleSubmit}
         />
 
@@ -138,29 +151,30 @@ function Exam() {
 
         <div className="exam-buttons">
           <button
+            className="previous-btn"
             onClick={handlePrevious}
             disabled={currentQuestion === 0}
-            className="previous-btn"
           >
             Previous
           </button>
 
           {currentQuestion === questions.length - 1 ? (
             <button
-              onClick={handleSubmit}
               className="submit-btn"
+              onClick={handleSubmit}
             >
               Submit Exam
             </button>
           ) : (
             <button
-              onClick={handleNext}
               className="next-btn"
+              onClick={handleNext}
             >
               Next
             </button>
           )}
         </div>
+
       </div>
     </>
   );
